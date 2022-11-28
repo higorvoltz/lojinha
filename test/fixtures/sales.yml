@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  vendor: one
+  product: one
+  sale_date: 
+
+two:
+  client: two
+  vendor: two
+  product: two
+  sale_date: 

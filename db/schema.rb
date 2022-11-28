@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,15 +12,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_25_171408) do
-
-  create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "cpf"
-    t.date "birth_date"
-    t.string "category"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_221_128_113_531) do
+  create_table 'clients', force: :cascade do |t|
+    t.string 'name'
+    t.string 'cpf'
+    t.date 'birth_date'
+    t.string 'category'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
+  create_table 'products', force: :cascade do |t|
+    t.string 'description'
+    t.string 'category'
+    t.decimal 'price'
+    t.decimal 'disccount'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'sales', force: :cascade do |t|
+    t.integer 'client_id', null: false
+    t.integer 'vendor_id', null: false
+    t.integer 'product_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['client_id'], name: 'index_sales_on_client_id'
+    t.index ['product_id'], name: 'index_sales_on_product_id'
+    t.index ['vendor_id'], name: 'index_sales_on_vendor_id'
+  end
+
+  create_table 'vendors', force: :cascade do |t|
+    t.string 'name'
+    t.string 'registration'
+    t.string 'role'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  add_foreign_key 'sales', 'clients'
+  add_foreign_key 'sales', 'products'
+  add_foreign_key 'sales', 'vendors'
 end
