@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  category: MyString
+  price: 9.99
+  disccount: 9.99
+
+two:
+  description: MyString
+  category: MyString
+  price: 9.99
+  disccount: 9.99
